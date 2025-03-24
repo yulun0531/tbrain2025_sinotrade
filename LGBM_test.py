@@ -7,7 +7,7 @@ import os
 test_file_path = r'C:\Users\yulun\Desktop\38_Public_Test_Set_and_Submmision_Template\38_Public_Test_Set_and_Submmision_Template\public_x.csv'
 submission_template_path = r'C:\Users\yulun\Desktop\38_Public_Test_Set_and_Submmision_Template\38_Public_Test_Set_and_Submmision_Template\submission_template_public.csv'
 model_path = r'C:\Users\yulun\Downloads\lightgbm_best_model.pkl'
-feature_names_path = r'C:\Users\yulun\Downloads\feature_names.txt'  # 訓練時的特徵名稱存放路徑
+feature_names_path = r'C:\Users\yulun\Downloads\selected_features.txt'  # 訓練時的特徵名稱存放路徑
 
 # **1️⃣ 讀取測試資料**
 print("📥 讀取測試資料...")
@@ -51,7 +51,7 @@ print("📊 開始預測...")
 y_pred = gbm.predict(test_df, num_iteration=gbm.best_iteration)
 
 # **6️⃣ 轉換為二元分類結果**
-y_pred_binary = [1 if pred > 0.3 else 0 for pred in y_pred]
+y_pred_binary = [1 if pred > 0.5 else 0 for pred in y_pred]
 
 # **7️⃣ 讀取提交模板**
 print("📄 讀取提交模板...")
